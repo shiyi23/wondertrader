@@ -116,7 +116,7 @@ bool ParserCTP::init(WTSVariant* config)
 
 	m_strFlowDir = StrUtil::standardisePath(m_strFlowDir);
 
-	std::string module = config->getCString("ctpmodule");//静态库文件路径
+	std::string module = config->getCString("ctpmodule");//库文件路径
 	if (module.empty())
 		module = "thostmduserapi_se";
 
