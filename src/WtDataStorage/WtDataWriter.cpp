@@ -126,7 +126,9 @@ bool WtDataWriter::init(WTSVariant* params, IDataWriterSink* sink)
 		for (uint32_t idx = 0; idx < ayKeys.size(); idx++)
 		{
 			_proc_date[ayKeys[idx].c_str()] = strtoul(ayVals[idx].c_str(), 0, 10);
+			pipe_writer_log(sink, LL_INFO, "_proc_date[ayKeys[idx].c_str()] = {}", _proc_date[ayKeys[idx].c_str()]);
 		}
+
 	}
 
 	loadCache();

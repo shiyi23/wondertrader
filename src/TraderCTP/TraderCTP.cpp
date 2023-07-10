@@ -92,6 +92,8 @@ TraderCTP::~TraderCTP()
 
 bool TraderCTP::init(WTSVariant* params)
 {
+	write_log(m_sink, LL_DEBUG, "[TraderCTP] TraderCTP::init begin ......");
+
 	m_strFront = params->get("front")->asCString();
 	m_strBroker = params->get("broker")->asCString();
 	m_strUser = params->get("user")->asCString();
@@ -356,7 +358,7 @@ int TraderCTP::orderInsert(WTSEntrust* entrust)
 	///组合开平标志: 开仓
 	req.CombOffsetFlag[0] = wrapOffsetType(entrust->getOffsetType());
 	///组合投机套保标志
-	req.CombHedgeFlag[0] = THOST_FTDC_HF_Speculation;
+	req.CombHedgeFlag[0] = THOST_FTDC_HF_Arbitrage;//套利
 	///价格
 	req.LimitPrice = entrust->getPrice();
 	///数量: 1
@@ -422,6 +424,7 @@ int TraderCTP::orderAction(WTSEntrustAction* action)
 	req.ActionFlag = wrapActionFlag(action->getActionFlag());
 	///合约代码
 	wt_strcpy(req.InstrumentID, action->getCode());
+	write_log(m_sink, LL_DEBUG, "[TraderCTP]: {}: req.InstrumentID: {}", __FUNCTION__, req.InstrumentID);
 
 	req.LimitPrice = action->getPrice();
 
@@ -1008,7 +1011,8 @@ void TraderCTP::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoFie
 
 void TraderCTP::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
-	int x = 0;
+	write_log(m_sink, LL_INFO, "[TraderCTP] TraderCTP::OnRspError: ErrorID: {}, ErrorMsg: {}, nRequestID: {}", 
+		pRspInfo->ErrorID, pRspInfo->ErrorMsg, nRequestID);
 }
 
 void TraderCTP::OnRtnOrder(CThostFtdcOrderField *pOrder)

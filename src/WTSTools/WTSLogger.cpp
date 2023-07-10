@@ -203,14 +203,20 @@ void WTSLogger::initLogger(const char* catName, WTSVariant* cfgLogger)
 void WTSLogger::init(const char* propFile /* = "logcfg.json" */, bool isFile /* = true */, ILogHandler* handler /* = NULL */)
 {
 	if (m_bInited)
+	{
 		return;
-
-	if (isFile && !StdFile::exists(propFile))
+	}
+	bool ispropFileExists = StdFile::exists(propFile);
+	if (isFile && !ispropFileExists)
+	{
 		return;
+	}
 
 	WTSVariant* cfg = isFile ? WTSCfgLoader::load_from_file(propFile, true) : WTSCfgLoader::load_from_content(propFile, false, true);
-	if (cfg == NULL)
+	if (!cfg)
+	{
 		return;
+	}
 
 	auto keys = cfg->memberNames();
 	for (std::string& key : keys)

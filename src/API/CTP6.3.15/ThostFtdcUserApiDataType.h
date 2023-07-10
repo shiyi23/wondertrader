@@ -882,7 +882,7 @@ typedef char TThostFtdcVolumeConditionType;
 #define THOST_FTDC_CC_Immediately '1'
 ///Ö¹Ëð
 #define THOST_FTDC_CC_Touch '2'
-///Ö¹Ó®
+///Ö¹Ó¯
 #define THOST_FTDC_CC_TouchProfit '3'
 ///Ô¤Âñµ¥
 #define THOST_FTDC_CC_ParkedOrder '4'

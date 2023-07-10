@@ -96,6 +96,8 @@ ParserCTP::~ParserCTP()
 
 bool ParserCTP::init(WTSVariant* config)
 {
+	write_log(m_sink, LL_INFO, "ParserCTP::init begin ...");
+
 	m_strFrontAddr = config->getCString("front");
 	m_strBroker = config->getCString("broker");
 	m_strUserID = config->getCString("user");
@@ -114,7 +116,7 @@ bool ParserCTP::init(WTSVariant* config)
 
 	m_strFlowDir = StrUtil::standardisePath(m_strFlowDir);
 
-	std::string module = config->getCString("ctpmodule");
+	std::string module = config->getCString("ctpmodule");//¾²Ì¬¿âÎÄ¼şÂ·¾¶
 	if (module.empty())
 		module = "thostmduserapi_se";
 

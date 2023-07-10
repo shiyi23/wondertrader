@@ -21,7 +21,7 @@ bool json_to_variant(const rj::Value& root, WTSVariant* params)
 
 	if (root.IsObject())
 	{
-		for (auto& m : root.GetObject())
+		for (auto& m : root.GetObjectA())
 		{
 			const char* key = m.name.GetString();
 			const rj::Value& item = m.value;
@@ -216,12 +216,16 @@ WTSVariant* WTSCfgLoader::load_from_content(const std::string& content, bool isY
 WTSVariant* WTSCfgLoader::load_from_file(const char* filename, bool isUTF8 /* = true */)
 {
 	if (!StdFile::exists(filename))
+	{
 		return NULL;
+	}
 
 	std::string content;
 	StdFile::read_file_content(filename, content);
 	if (content.empty())
+	{
 		return NULL;
+	}
 
 	//By Wesley @ 2022.01.07
 	//Linuxœ¬µ√ «UTF8

@@ -260,7 +260,9 @@ int main()
 {
 	std::string filename = "logcfgdt.json";
 	if (!StdFile::exists(filename.c_str()))
+	{
 		filename = "logcfgdt.yaml";
+	}
 
 	WTSLogger::init(filename.c_str());
 
@@ -286,7 +288,7 @@ int main()
 		WTSLogger::error(message);
 	});
 #endif
-
+	WTSLogger::info("Will initialize ...");
 	initialize();
 
 	boost::asio::io_service::work work(g_asyncIO);

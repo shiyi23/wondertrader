@@ -81,7 +81,7 @@ bool WtRunner::config()
 		return false;
 	}
 
-	//基础数据文件
+	//基础数据文件:wtpy/demos/common
 	WTSVariant* cfgBF = _config->get("basefiles");
 	bool isUTF8 = cfgBF->getBoolean("utf-8");
 	if (cfgBF->get("session"))
