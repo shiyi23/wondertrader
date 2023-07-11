@@ -7,6 +7,8 @@
  * 
  * \brief 
  */
+
+#include <winsock2.h>
 #include "ParserAdapter.h"
 #include "WtUftEngine.h"
 #include "WtHelper.h"
@@ -19,6 +21,8 @@
 #include "../Share/StrUtil.hpp"
 
 #include "../WTSTools/WTSLogger.h"
+
+#include <winsock2.h>
 
 USING_NS_WTP;
 

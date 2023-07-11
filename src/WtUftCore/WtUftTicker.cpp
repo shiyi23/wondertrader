@@ -7,6 +7,8 @@
  * 
  * \brief 
  */
+
+#include <winsock2.h>
 #include "WtUftTicker.h"
 #include "WtUftEngine.h"
 #include "../Includes/IDataReader.h"

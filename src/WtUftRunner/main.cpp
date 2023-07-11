@@ -7,7 +7,7 @@
  * 
  * /brief 
  */
-
+#include <winsock2.h>
 #include "WtUftRunner.h"
 
 #include "../WTSTools/WTSLogger.h"

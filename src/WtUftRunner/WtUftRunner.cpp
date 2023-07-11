@@ -7,6 +7,8 @@
  * 
  * /brief 
  */
+
+#include <winsock2.h>
 #include "WtUftRunner.h"
 
 #include "../WtUftCore/WtHelper.h"
